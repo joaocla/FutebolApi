@@ -16,7 +16,7 @@ if (app.Environment.IsDevelopment())
 // GET Times
 app.MapGet("/times", async (AppDbContext db) =>
 {
-    return await db.Times.ToListAsync();
+    return await db.Times.AsNoTracking().ToListAsync();
 });
 
 // GET Time
@@ -32,7 +32,7 @@ app.MapPost("/times", async (AppDbContext db, Time novoTime) =>
 {
     db.Add(novoTime);
     await db.SaveChangesAsync();
-    return Results.Created($"O time {novoTime.Nome} foi criado com sucesso!", novoTime);
+    return Results.Created($"/times/{novoTime.Id}", novoTime);
 });
 
 //PUT Times
@@ -64,7 +64,7 @@ app.MapDelete("/times/{id}", async (int id, AppDbContext db) =>
 //GET Jogadores
 app.MapGet("/jogadores", async (AppDbContext db) =>
 {
-    return await db.Jogadores.ToListAsync();
+    return await db.Jogadores.AsNoTracking().ToListAsync();
 });
 
 //GET Jogador
@@ -78,7 +78,7 @@ app.MapPost("/jogadores", async (AppDbContext db, Jogador novoJogador) =>
 {
     db.Add(novoJogador);
     await db.SaveChangesAsync();
-    return Results.Created($"O jogador {novoJogador.Nome} foi criado com sucesso!", novoJogador);
+    return Results.Created($"/jogadores/{novoJogador.Id}", novoJogador);
 });
 
 //PUT Jogador

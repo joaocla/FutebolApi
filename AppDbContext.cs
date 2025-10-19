@@ -12,7 +12,7 @@ namespace FutebolApi
         base(options)
         { }
 
-        public DbSet<Time> Times => Set<Time>();
-        public DbSet<Jogador> Jogadores => Set<Jogador>();
+        public DbSet<Time> Times { get; set; } = null!;
+        public DbSet<Jogador> Jogadores { get; set; } = null!;
     }
 }
