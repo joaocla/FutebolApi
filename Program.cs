@@ -3,7 +3,15 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=futebolapi.db"));
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 // GET Times
 app.MapGet("/times", async (AppDbContext db) =>
@@ -42,6 +50,17 @@ app.MapPut("/times/{id}", async (int id, AppDbContext db, Time timeAtt) =>
     return Results.Ok(time);
 });
 
+//DELETE time
+app.MapDelete("/times/{id}", async (int id, AppDbContext db) =>
+{
+    var time = await db.Times.FindAsync(id);
+    if (time is null) return Results.NotFound("Time não encontrado");
+
+    db.Times.Remove(time);
+    await db.SaveChangesAsync();
+    return Results.NoContent();
+});
+
 //GET Jogadores
 app.MapGet("/jogadores", async (AppDbContext db) =>
 {
@@ -77,6 +96,17 @@ app.MapPut("/jogadores/{id}", async (int id, AppDbContext db, Jogador jogadorAtt
 
     await db.SaveChangesAsync();
     return Results.Ok(jogador);
+});
+
+//DELETE Jogador
+app.MapDelete("/jogadores/{id}", async (int id, AppDbContext db) =>
+{
+    var jogador = await db.Jogadores.FindAsync(id);
+    if (jogador is null) return Results.NotFound("Jogador não encontrado");
+
+    db.Jogadores.Remove(jogador);
+    await db.SaveChangesAsync();
+    return Results.NoContent();
 });
 
 app.Run();
