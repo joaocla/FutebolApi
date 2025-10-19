@@ -63,3 +63,8 @@ C:\Users\joaocla\FutebolApi\bin\Debug\net9.0\runtimes\win-x86\native\e_sqlite3.d
 C:\Users\joaocla\FutebolApi\obj\Debug\net9.0\FutebolApi.csproj.AssemblyReference.cache
 C:\Users\joaocla\FutebolApi\obj\Debug\net9.0\FutebolApi.csproj.Up2Date
 C:\Users\joaocla\FutebolApi\obj\Debug\net9.0\FutebolApi.sourcelink.json
+C:\Users\joaocla\FutebolApi\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\joaocla\FutebolApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\joaocla\FutebolApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\joaocla\FutebolApi\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\joaocla\FutebolApi\obj\Debug\net9.0\FutebolApi.MvcApplicationPartsAssemblyInfo.cs
